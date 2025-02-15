@@ -22,7 +22,7 @@ class_names = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
 
 
 def load_and_preprocess_image(img_path, target_size=(224, 224)):
-    """Загружает и предобрабатывает изображение."""
+    """Загружает и обрабатывает изображение."""
     from tensorflow.keras.preprocessing import image
 
     img = image.load_img(img_path, target_size=target_size)
