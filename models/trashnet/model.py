@@ -1,6 +1,5 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Путь к данным
 dataset = 'data/Dataset_categories'
