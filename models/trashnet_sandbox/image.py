@@ -39,8 +39,9 @@ class_names = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
 
 
 # Интерфейс tkinter
-root = tk.Tk()
-root.title("Загрузка изображения")
-btn_upload = tk.Button(root, text="Загрузить изображение", command=upload_and_predict)
-btn_upload.pack(pady=20)
-root.mainloop()
+def image_main():
+    root = tk.Tk()
+    root.title("Загрузка изображения")
+    btn_upload = tk.Button(root, text="Загрузить изображение", command=upload_and_predict)
+    btn_upload.pack(pady=20)
+    root.mainloop()
