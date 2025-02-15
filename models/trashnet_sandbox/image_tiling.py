@@ -45,9 +45,8 @@ def mass(lengat):
             cv2.imwrite(complete_path, cv2_image)
 
 
-def big_image(image):
+def big_image(image, num_parts):
     image_path = os.path.abspath(image)
-    num_parts = 256
 
     segmented_images = divide_image(image_path, num_parts)
 

@@ -5,8 +5,8 @@ import image_eval
 import image_tiling
 
 
-def bita(big_image_path):
-    image_tiling.big_image(big_image_path)  # tiles by 256 by default
+def bita(big_image_path, t_num):
+    image_tiling.big_image(big_image_path, t_num)  # tiles by 64 by default
     save_path = 'data/Segmented_BITA/'
     tiles_info = []
     i = 0
@@ -21,6 +21,7 @@ def bita(big_image_path):
     return tiles_info
 
 
-pred = bita('data/Possible_trash_on_platforms/platform_10.jpg')
+tiles = 64
+pred = bita('data/Possible_trash_on_platforms/platform_10.jpg', tiles)
 
 print(pred)
