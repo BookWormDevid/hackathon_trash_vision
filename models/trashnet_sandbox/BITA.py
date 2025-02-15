@@ -3,7 +3,6 @@
 import os
 import image_eval
 import image_tiling
-import cv2
 
 
 def bita(big_image_path):
