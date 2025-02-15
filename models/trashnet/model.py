@@ -39,31 +39,32 @@ base_model = tf.keras.applications.MobileNetV2(
     input_shape=(224, 224, 3), include_top=False, weights="imagenet"
 )
 base_model.trainable = False
-#for layer in base_model.layers[:-60]:
-    #layer.trainable = False
+'''for layer in base_model.layers[:-40]:
+    layer.trainable = False'''
 
 model = tf.keras.Sequential([
     data_augmentation,
     tf.keras.layers.Rescaling(1./255),
     base_model,
     tf.keras.layers.GlobalAveragePooling2D(),
-    tf.keras.layers.Dense(4096, activation='elu'),
-    tf.keras.layers.Dense(1024, activation='elu'),
-    tf.keras.layers.Dense(128, activation='elu'),
+    tf.keras.layers.Dense(256, activation='relu'),
+    tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dropout(0.4),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dropout(0.3),
     tf.keras.layers.Dense(len(class_names), activation='softmax')
 ])
-model.build()
+model.build(input_shape=(None, 224, 224, 3))
 
 
 model.compile(
-    optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+    optimizer=tf.keras.optimizers.Adam(learning_rate=0.0005),
     loss=tf.keras.losses.SparseCategoricalCrossentropy(),
     metrics=['accuracy']
 )
 model.summary()
 
-history = model.fit(train_ds, validation_data=val_ds, epochs=4)
+history = model.fit(train_ds, validation_data=val_ds, epochs=5)
 
 # Построение графиков точности и потерь
 acc = history.history['accuracy']
