@@ -7,7 +7,7 @@ import cv2
 
 
 def bita(big_image_path):
-    image_tiling.big_image(big_image_path)  # tiles by 64 by default
+    image_tiling.big_image(big_image_path)  # tiles by 256 by default
     save_path = 'data/Segmented_BITA/'
     tiles_info = []
     i = 0
