@@ -1,12 +1,12 @@
 import os
 
 
-path = 'Possible_trash_on_platforms/'
+path = 'cardboard_2/'
 
-for i in range(1, 108):
+for i in range(0, 17000):
 
-    src = 'platform' + str(i) + '.jpg'
-    dst = 'platform_' + str(i) + '.jpg'
+    src = os.listdir(path)[i]
+    dst = 'cardboard' + str(i+1000) + '.jpg'
 
     os.rename(path + src, path + dst)
 

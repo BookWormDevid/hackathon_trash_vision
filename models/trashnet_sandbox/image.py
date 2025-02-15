@@ -1,7 +1,6 @@
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
-import matplotlib.pyplot as plt
 import tkinter as tk
 from tkinter import filedialog
 
@@ -45,3 +44,6 @@ def image_main():
     btn_upload = tk.Button(root, text="Загрузить изображение", command=upload_and_predict)
     btn_upload.pack(pady=20)
     root.mainloop()
+
+
+image_main()
