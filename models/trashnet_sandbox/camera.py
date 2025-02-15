@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 # Загрузка модели
@@ -9,7 +8,8 @@ model = load_model('trashnet_classifier.h5')
 # Классы мусора (по порядку, в котором обучалась модель)
 class_labels = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
 
-# Функция обработки видеопотока с веб-камеры
+
+# Функция обработки видео потока с веб-камеры
 def detect_trash_from_webcam(conf_threshold=0.5):
     cap = cv2.VideoCapture(0)  # 0 - основная веб-камера
 
@@ -19,7 +19,7 @@ def detect_trash_from_webcam(conf_threshold=0.5):
             print("❌ Ошибка чтения кадра!")
             break
 
-        # Изменение размера и предобработка изображения
+        # Изменение размера и пред обработка изображения
         input_frame = cv2.resize(frame, (224, 224))
         input_frame = np.expand_dims(input_frame, axis=0)
 
@@ -45,5 +45,6 @@ def detect_trash_from_webcam(conf_threshold=0.5):
     cap.release()
     cv2.destroyAllWindows()
 
-# Запуск видеопотока с веб-камеры
+
+# Запуск видео потока с веб-камеры
 detect_trash_from_webcam()

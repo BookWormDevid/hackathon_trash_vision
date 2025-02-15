@@ -1,7 +1,6 @@
 import cv2
 import math
 import os
-from PIL import Image
 
 
 def divide_image(image_path, num_parts):
@@ -31,7 +30,7 @@ def divide_image(image_path, num_parts):
 
 
 def main():
-    folder_path = "C://Users/Koraku/trashnet/Possible_trash_on_platforms/"
+    folder_path = "data/Possible_trash_on_platforms"
     num_parts = int(input("Enter the number of parts to segment the images into: "))
 
     for i in range(1, 108):
@@ -39,7 +38,7 @@ def main():
         image_path = folder_path + ind_img_path
         segmented_images = divide_image(image_path, num_parts)
         for j, segment in enumerate(segmented_images):
-            save_path = ('C://Users/Koraku/trashnet/dataset-resized/')
+            save_path = 'data/Trash_on_plat_segmented'
             filename = 'Image_'+str(i)+'_' + f'Segment_{j+1}' + '.jpg'
             complete_path = os.path.join(save_path, filename)
             cv2_image = cv2.cvtColor(segment, cv2.COLOR_BGR2RGB)
