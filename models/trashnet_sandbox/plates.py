@@ -6,6 +6,7 @@ from tensorflow.keras.models import load_model
 # Загрузка вашей модели
 model = load_model('trashnet_classifier.h5')  # Замените на путь к вашей модели
 
+
 # Функция для обработки фотографии с использованием метода скользящего окна
 def detect_trash_in_image(image_path, window_size=(224, 224), step_size=224, conf_threshold=0.5):
     # Загрузка изображения
@@ -49,6 +50,7 @@ def detect_trash_in_image(image_path, window_size=(224, 224), step_size=224, con
     cv2.destroyAllWindows()
 
     print(f"Обработанное изображение сохранено как {output_path}")
+
 
 # Запуск обработки изображения
 detect_trash_in_image('23.jpg')  # Замените на путь к вашему изображению

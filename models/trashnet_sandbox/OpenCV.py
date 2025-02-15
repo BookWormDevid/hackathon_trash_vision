@@ -1,7 +1,8 @@
 import cv2
 import math
-import matplotlib.pyplot as plt
-import os.path
+import os
+from PIL import Image
+
 
 def divide_image(image_path, num_parts):
     # Read the image
@@ -34,17 +35,16 @@ def main():
     num_parts = int(input("Enter the number of parts to segment the images into: "))
 
     for i in range(1, 108):
-        ind_img_path = 'platform_' + str(i)
+        ind_img_path = 'platform_' + str(i) + '.jpg'
         image_path = folder_path + ind_img_path
         segmented_images = divide_image(image_path, num_parts)
         for j, segment in enumerate(segmented_images):
-            save_path = 'Trash_on_plat_segmented'
-            filename = 'ind_img_path' + f'Segment {j+1}'
-            completeName = os.path.join(save_path, filename + ".jpg")
-            filewriter = open(completeName, "w")
-
-    cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+            save_path = ('C:/Users/Kotda/PycharmProjects/hackathon_trash_vision'
+                         '/models/trashnet_sandbox/data/Trash_on_plat_segmented/')
+            filename = 'Image_'+str(i)+'_' + f'Segment_{j+1}' + '.jpg'
+            complete_path = os.path.join(save_path, filename)
+            cv2_image = cv2.cvtColor(segment, cv2.COLOR_BGR2RGB)
+            cv2.imwrite(complete_path, cv2_image)
 
 
 if __name__ == "__main__":
