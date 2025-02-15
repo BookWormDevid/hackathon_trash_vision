@@ -38,7 +38,7 @@ data_augmentation = tf.keras.Sequential([
 base_model = tf.keras.applications.MobileNetV2(
     input_shape=(224, 224, 3), include_top=False, weights="imagenet"
 )
-base_model.trainable = False
+base_model.trainable = True
 
 model = tf.keras.Sequential([
     data_augmentation,
