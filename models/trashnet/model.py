@@ -2,13 +2,13 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Путь к датасету
+# Путь к данным
 dataset = 'data/Dataset_categories'
 
 # Загрузка данных
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     dataset, validation_split=0.2, subset="training",
-    seed=123, image_size=(224, 224), batch_size=32  # Уменьшаем батч для стабильности
+    seed=123, image_size=(224, 224), batch_size=32  # Уменьшаем batch для стабильности
 )
 
 val_ds = tf.keras.preprocessing.image_dataset_from_directory(
@@ -61,7 +61,7 @@ model.compile(
 model.build(input_shape=(None, 224, 224, 3))
 model.summary()
 
-# Коллбэки для ранней остановки и адаптивного уменьшения LR
+# Для ранней остановки и адаптивного уменьшения LR
 early_stopping = tf.keras.callbacks.EarlyStopping(
     monitor="val_loss", patience=3, restore_best_weights=True
 )
