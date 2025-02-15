@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Путь к датасету
-dataset = 'dataset-re'
+dataset = 'data/Dataset_categories'
 
 # Загрузка данных
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
