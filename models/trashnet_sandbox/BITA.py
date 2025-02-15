@@ -10,7 +10,7 @@ def bita(big_image_path):
     save_path = 'data/Segmented_BITA/'
     tiles_info = []
     i = 0
-    for segment in enumerate(os.listdir('data/Segmented_BITA')):
+    for _ in enumerate(os.listdir('data/Segmented_BITA')):
         filename = 'Image_' + f'Segment_{i + 1}' + '.jpg'
         complete_path = os.path.join(save_path, filename)
         tile_info = image_eval.choose_and_predict(complete_path)
