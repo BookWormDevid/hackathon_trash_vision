@@ -38,7 +38,7 @@ class_names = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
 
 
 # Интерфейс tkinter
-def image_main():
+def main():
     root = tk.Tk()
     root.title("Загрузка изображения")
     btn_upload = tk.Button(root, text="Загрузить изображение", command=upload_and_predict)
@@ -46,4 +46,5 @@ def image_main():
     root.mainloop()
 
 
-image_main()
+if __name__ == '__main__':
+    main()
