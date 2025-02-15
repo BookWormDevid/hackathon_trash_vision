@@ -1,5 +1,5 @@
 # This is very basic model so far
-import tensorflow as tf
+'''import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.layers import Conv2D, Dense, Dropout, Input, MaxPool2D, BatchNormalization, Flatten
@@ -75,3 +75,4 @@ def get_base_model(params):
         metrics=["accuracy"]
     )
     return model
+'''
