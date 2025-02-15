@@ -29,11 +29,11 @@ def divide_image(image_path, num_parts):
     return parts
 
 
-def main():
+def mass(lengat):
     folder_path = "data/Possible_trash_on_platforms"
-    num_parts = int(input("Enter the number of parts to segment the images into: "))
+    num_parts = 64  # OR  int(input("Enter the number of parts to segment the images into: "))
 
-    for i in range(1, 108):
+    for i in range(1, lengat):
         ind_img_path = 'platform_' + str(i) + '.jpg'
         image_path = folder_path + ind_img_path
         segmented_images = divide_image(image_path, num_parts)
@@ -45,5 +45,17 @@ def main():
             cv2.imwrite(complete_path, cv2_image)
 
 
-if __name__ == "__main__":
-    main()
+def big_image(image):
+    image_path = os.path.abspath(image)
+    num_parts = 256
+
+    segmented_images = divide_image(image_path, num_parts)
+
+    for i, segment in enumerate(segmented_images):
+        save_path = 'data/Segmented_BITA'
+        filename = 'Image_' + f'Segment_{i + 1}' + '.jpg'
+        complete_path = os.path.join(save_path, filename)
+        cv2_image = cv2.cvtColor(segment, cv2.COLOR_BGR2RGB)
+        cv2.imwrite(complete_path, cv2_image)
+
+
