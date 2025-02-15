@@ -34,7 +34,7 @@ def main():
     folder_path = "Possible_trash_on_platforms/"
     num_parts = int(input("Enter the number of parts to segment the images into: "))
 
-    for i in range(1, 108):
+    for i in range(1, 4):
         ind_img_path = 'platform_' + str(i) + '.jpg'
         image_path = folder_path + ind_img_path
         segmented_images = divide_image(image_path, num_parts)
