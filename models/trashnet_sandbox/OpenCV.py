@@ -1,6 +1,7 @@
 import cv2
 import math
-
+import matplotlib.pyplot as plt
+import os.path
 
 def divide_image(image_path, num_parts):
     # Read the image
@@ -29,17 +30,21 @@ def divide_image(image_path, num_parts):
 
 
 def main():
-    image_path = "data/Possible_trash_on_platforms/platform-2.jpg"
-    num_parts = int(input("Enter the number of parts to segment the image into: "))
+    folder_path = "data/Possible_trash_on_platforms/"
+    num_parts = int(input("Enter the number of parts to segment the images into: "))
 
-    segmented_images = divide_image(image_path, num_parts)
-
-    # Display the segmented images
-    for i, segment in enumerate(segmented_images):
-        cv2.imshow(f'Segment {i+1}', segment)
+    for i in range(1, 108):
+        ind_img_path = 'platform_' + str(i)
+        image_path = folder_path + ind_img_path
+        segmented_images = divide_image(image_path, num_parts)
+        for j, segment in enumerate(segmented_images):
+            save_path = 'Trash_on_plat_segmented'
+            filename = 'ind_img_path' + f'Segment {j+1}'
+            completeName = os.path.join(save_path, filename + ".jpg")
+            filewriter = open(completeName, "w")
 
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
